@@ -1,0 +1,11 @@
+[
+    {
+        "title": "MONITORING ENERGI BERBASIS LOKAL WEB DENGAN PROTOKOL MQTT WIRELESS ",
+        "year": "2022",
+        "fund": "PT Djarum",
+        "partner": "Ahmad Hanafi",
+        "role": "Lead Engineer",
+        "description": "Local web-based energy monitoring with the wireless MQTT protocol is a system designed to monitor electrical energy usage in real-time via a wireless network, using a lightweight communication protocol, namely MQTT (Message Queuing Telemetry Transport).",
+        "image": "images/Tugas Akhir.jpg"
+    }
+]
