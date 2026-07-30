@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-l lang="en">
-d>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Portfolio</title>
@@ -13,16 +13,44 @@ d>
             font-family: Arial, Helvetica, sans-serif !important;
         }
 
-		.cv-download-btn {
-			position relative;
-			z-index: 10;
-			cursor: pointer;
-			display: inline-block;
+		.profile-contact a.cv-download-btn,
+        #cv-download {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 42px !important;
+            height: 42px !important;
+            border-radius: 50% !important;
+            background-color: #ffebee !important;
+            color: #e53935 !important;
+            text-decoration: none !important;
+            position: relative !important;
+            z-index: 999 !important; /* Memastikan posisi di paling atas agar bisa diklik */
+            cursor: pointer !important;
+            margin-top: 10px !important;
+            overflow: hidden !important; /* Mencegah ikon keluar lingkaran */
+		}
+
+		.profile-contact a.cv-download-btn i,
+        #cv-download i {
+            font-size: 20px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            line-height: 1 !important;
+            color: #e53935 !important;
+		}
+
+		/* Efek saat tombol di-hover */
+        .profile-contact a.cv-download-btn:hover,
+        #cv-download:hover {
+            background-color: #ffcdd2 !important;
+            transform: scale(1.05);
+            transition: all 0.2s ease;
 		}
     </style>
-</style>
-ad>
-y>
+</head>
+<body>
+	
     <header>
         <nav class="sidebar-nav">
 			<ul>
@@ -65,14 +93,14 @@ y>
 							<p><i class="fas fa-envelope"></i> <span id="profile-email">riganisbatulhaqqi6@gmail.com</span></p>
 							<p><i class="fas fa-phone"></i> <span id="profile-phone">089520084593</span></p>
 							<div class="social-links" id="social-links"></div>
-							<a href="CV_Rigan20%Isbatul20%Haqqi.pdf" id="cv-download" class="cv-download-btn" title="Download CV" download="CV_Rigan_Isbatul_Haqqi.pdf">
+							<a href="CV_Rigan20%Isbatul20%Haqqi.pdf" id="cv-download" class="cv-download-btn" title="Download CV" download>
 								<i class="fas fa-file-pdf"></i>
 							</a>
 						</div>
-					</div>
-					<div class="profile-info">
+						v>
+					     class="profile-info">
 						<h1 id="profile-name"></h1>
-						    <p id="longor"></p>
+					    <p id="longor"></p>
     						<!-- letak skill-->
 							<div class="skills-container" id="skills-container">
 								<h3>Profile</h3>
