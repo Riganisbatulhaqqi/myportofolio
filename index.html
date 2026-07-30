@@ -11,53 +11,121 @@
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif !important;
+            background-color: #f8f9fa;
         }
 
-        /* Penyesuaian Flexbox agar Foto & Profile Sejajar Samping */
+        /* 1. Tata Letak Utama Berdampingan */
         .profile-content {
             display: flex !important;
             flex-direction: row !important;
-            align-items: flex-start !important;
-            gap: 30px !important;
+            align-items: stretch !important;
+            gap: 24px !important;
+        }
+
+        /* 2. Kolom Kiri (Foto + Kontak) */
+        .profile-left-column {
+            width: 280px !important;
+            flex-shrink: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
         }
 
         .profile-image-container {
-            position: relative !important;
+            width: 100% !important;
+        }
+
+        .profile-image {
+            width: 100% !important;
+            border-radius: 20px !important;
+            display: block !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+        }
+
+        /* 3. Kartu Kontak Rapi Sesuai Gambar */
+        .profile-contact {
+            background: #ffffff !important;
+            padding: 20px 22px !important;
+            border-radius: 16px !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
+            border: 1px solid #f0f0f0 !important;
+        }
+
+        .profile-contact-item {
+            display: flex !important;
+            align-items: center !important;
+            gap: 14px !important;
+            color: #333333 !important;
+            font-size: 14px !important;
+            text-decoration: none !important;
+        }
+
+        .profile-contact-item i {
+            font-size: 18px !important;
+            color: #222222 !important;
+            width: 20px !important;
+            text-align: center !important;
             flex-shrink: 0 !important;
         }
 
-        .profile-info {
-            flex: 1 !important;
+        .profile-contact-item span {
+            word-break: break-all !important;
+            font-weight: 500 !important;
+            line-height: 1.2 !important;
         }
 
-        /* Tombol Download CV Terapung/Melayang di Pojok Foto atau Teks */
-        .cv-download-btn-floating {
+        /* 4. Tombol PDF Bulat Rapi Sesuai Referensi */
+        .cv-download-btn {
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
-            width: 40px !important;
-            height: 40px !important;
+            width: 44px !important;
+            height: 44px !important;
             border-radius: 50% !important;
             background-color: #ffebee !important;
             color: #e53935 !important;
             text-decoration: none !important;
-            position: absolute !important;
-            bottom: 15px !important;
-            right: 15px !important;
-            z-index: 99 !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             cursor: pointer !important;
+            margin-top: 4px !important;
+            transition: all 0.2s ease !important;
+            border: 1px solid #ffcdd2 !important;
         }
 
-        .cv-download-btn-floating i {
-            font-size: 18px !important;
+        .cv-download-btn i {
+            font-size: 20px !important;
             color: #e53935 !important;
         }
 
-        .cv-download-btn-floating:hover {
+        .cv-download-btn:hover {
             background-color: #ffcdd2 !important;
-            transform: scale(1.1);
-            transition: all 0.2s ease;
+            transform: scale(1.06) !important;
+        }
+
+        /* 5. Kolom Kanan (Kartu Profile) */
+        .profile-info {
+            flex: 1 !important;
+            background: #ffffff !important;
+            padding: 24px 28px !important;
+            border-radius: 16px !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
+            border: 1px solid #f0f0f0 !important;
+        }
+
+        .skills-container h3 {
+            margin-top: 0 !important;
+            color: #1a252f !important;
+            font-size: 20px !important;
+            margin-bottom: 16px !important;
+        }
+
+        .skills-container p {
+            color: #4a5568 !important;
+            line-height: 1.65 !important;
+            font-size: 14.5px !important;
+            margin: 0 !important;
         }
     </style>
 </head>
@@ -100,20 +168,35 @@
             <div class="container">
                 <div class="profile-content">
 
-                    <!-- SISI KIRI: Foto Sahaja -->
-                    <div class="profile-image-container">
-                        <img id="profile-pic" src="Foto Rigan.jpg" alt="Profile Picture" class="profile-image">
+                    <!-- KOLOM KIRI: Foto & Kartu Kontak -->
+                    <div class="profile-left-column">
+                        <div class="profile-image-container">
+                            <img id="profile-pic" src="Foto Rigan.jpg" alt="Profile Picture" class="profile-image">
+                        </div>
                         
-                        <!-- Tombol CV Ikon PDF di Pojok Kanan Bawah Foto -->
-                        <a href="CV_Rigan%20Isbatul%20Haqqi.pdf" id="cv-download" class="cv-download-btn-floating" title="Download CV" download="CV_Rigan_Isbatul_Haqqi.pdf">
-                            <i class="fas fa-file-pdf"></i>
-                        </a>
+                        <!-- Kartu Kontak Putih Bersih -->
+                        <div class="profile-contact">
+                            <a href="mailto:riganisbatulhaqqi6@gmail.com" class="profile-contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span id="profile-email">riganisbatulhaqqi6@gmail.com</span>
+                            </a>
+                            <a href="tel:089520084593" class="profile-contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span id="profile-phone">089520084593</span>
+                            </a>
+                            <div class="social-links" id="social-links"></div>
+                            
+                            <!-- Tombol Download CV -->
+                            <a href="CV_Rigan%20Isbatul%20Haqqi.pdf" id="cv-download" class="cv-download-btn" title="Download CV" download="CV_Rigan_Isbatul_Haqqi.pdf">
+                                <i class="fas fa-file-pdf"></i>
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- SISI KANAN: Kotak Deskripsi Profile -->
+                    <!-- KOLOM KANAN: Deskripsi Profile -->
                     <div class="profile-info">
-                        <h1 id="profile-name"></h1>
-                        <p id="longor"></p>
+                        <h1 id="profile-name" style="display:none;"></h1>
+                        <p id="longor" style="display:none;"></p>
                         <div class="skills-container" id="skills-container">
                             <h3>Profile</h3>
                             <p style="text-align: justify;">
