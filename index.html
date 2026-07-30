@@ -153,7 +153,7 @@
         }
 
         /* ========================================================
-           ATURAN UNTUK 3 GAMBAR SEJAJAR & DESKRIPSI DI BAWAH
+           3 GAMBAR SEJAJAR & DESKRIPSI DI BAWAH
         ======================================================== */
         .gallery-row-container {
             display: flex !important;
@@ -166,7 +166,7 @@
             box-sizing: border-box !important;
         }
 
-        .gallery-row-container img {
+        .zoomable-img {
             flex: 1 1 0 !important;
             width: 32% !important;
             max-width: 32% !important;
@@ -177,6 +177,13 @@
             border: 1px solid #e2e8f0 !important;
             display: block !important;
             margin: 0 !important;
+            cursor: pointer !important; /* Menandakan gambar bisa diklik */
+            transition: transform 0.2s ease, filter 0.2s ease !important;
+        }
+
+        .zoomable-img:hover {
+            transform: scale(1.03) !important;
+            filter: brightness(0.95) !important;
         }
 
         .single-box-description {
@@ -234,6 +241,62 @@
             margin: 0 !important;
         }
 
+        /* ========================================================
+           STYLE UNTUK POPUP / MODAL ZOOM GAMBAR
+        ======================================================== */
+        .image-modal-overlay {
+            display: none; /* Tersembunyi secara default */
+            position: fixed;
+            z-index: 99999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Latar belakang gelap */
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px); /* Efek blur di belakang */
+            animation: fadeIn 0.25s ease-in-out;
+        }
+
+        .image-modal-overlay.active {
+            display: flex;
+        }
+
+        .image-modal-content {
+            max-width: 85%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: contain;
+            animation: zoomIn 0.25s ease-in-out;
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #ffffff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .image-modal-close:hover {
+            color: #ff4d4d;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
         /* Responsif Layar HP */
         @media (max-width: 768px) {
             .profile-content {
@@ -245,7 +308,7 @@
             .gallery-row-container {
                 flex-direction: column !important;
             }
-            .gallery-row-container img {
+            .zoomable-img {
                 width: 100% !important;
                 max-width: 100% !important;
             }
@@ -334,11 +397,11 @@
             <div class="container">
                 <h2>Education</h2>
                 
-                <!-- 3 Gambar Kunci Menggunakan Style Inline agar Tidak Bisa Dirusak CSS Luar -->
-                <div class="gallery-row-container" style="display: flex !important; flex-direction: row !important; gap: 16px !important; width: 100% !important;">
-                    <img src="foto1.jpg" alt="Foto Education 1" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
-                    <img src="foto 2.jpg" alt="Foto Education 2" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
-                    <img src="foto3.jpg" alt="Foto Education 3" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
+                <!-- 3 Gambar dengan Class zoomable-img -->
+                <div class="gallery-row-container">
+                    <img src="foto1.jpg" alt="Foto Education 1" class="zoomable-img">
+                    <img src="foto 2.jpg" alt="Foto Education 2" class="zoomable-img">
+                    <img src="foto3.jpg" alt="Foto Education 3" class="zoomable-img">
                 </div>
 
                 <!-- 1 Deskripsi di Bawah Gambar -->
@@ -371,11 +434,11 @@
             <div class="container">
                 <h2>Research and Projects</h2>
                 
-                <!-- 3 Gambar Sejajar Proyek -->
-                <div class="gallery-row-container" style="display: flex !important; flex-direction: row !important; gap: 16px !important; width: 100% !important;">
-                    <img src="foto_proyek_1.jpg" alt="Proyek 1" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
-                    <img src="foto_proyek_2.jpg" alt="Proyek 2" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
-                    <img src="foto_proyek_3.jpg" alt="Proyek 3" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
+                <!-- 3 Gambar Proyek dengan Class zoomable-img -->
+                <div class="gallery-row-container">
+                    <img src="foto_proyek_1.jpg" alt="Proyek 1" class="zoomable-img">
+                    <img src="foto_proyek_2.jpg" alt="Proyek 2" class="zoomable-img">
+                    <img src="foto_proyek_3.jpg" alt="Proyek 3" class="zoomable-img">
                 </div>
 
                 <!-- 1 Deskripsi di Bawah Gambar Proyek -->
@@ -390,10 +453,45 @@
         </section>
     </main>
 
+    <!-- WADAH POPUP / MODAL GAMBAR MEMBESAR -->
+    <div id="imageModal" class="image-modal-overlay">
+        <span class="image-modal-close">&times;</span>
+        <img class="image-modal-content" id="modalImage" alt="Zoomed View">
+    </div>
+
     <footer>
         <p>&copy; <span id="current-year">2026</span> Rigan Isbatul Haqqi portofolio</p>
     </footer>
 
+    <!-- SCRIPT FITUR ZOOM GAMBAR -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const closeBtn = document.querySelector(".image-modal-close");
+            const zoomableImages = document.querySelectorAll(".zoomable-img");
+
+            // Pasang event click pada semua gambar ber-class .zoomable-img
+            zoomableImages.forEach(img => {
+                img.addEventListener("click", function () {
+                    modal.classList.add("active");
+                    modalImg.src = this.src;
+                });
+            });
+
+            // Tombol Tutup (X)
+            closeBtn.addEventListener("click", function () {
+                modal.classList.remove("active");
+            });
+
+            // Tutup jika area luar gambar di-klik
+            modal.addEventListener("click", function (e) {
+                if (e.target !== modalImg) {
+                    modal.classList.remove("active");
+                }
+            });
+        });
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>
