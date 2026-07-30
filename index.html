@@ -1,25 +1,480 @@
-<!-- Education Section -->
-<section id="education" class="section">
-    <div class="container">
-        <h2>Education</h2>
-        
-        <div class="gallery-row-container">
-            <img src="foto2.jpg" alt="Foto Education 1" class="zoomable-img">
-            
-            <!-- Gambar Tengah Dibungkus logo-wrapper -->
-            <div class="logo-wrapper">
-                <img src="foto1.jpg" alt="Foto Education 2" class="zoomable-img">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif !important;
+            background-color: #f8f9fa;
+        }
+
+        /* 1. Tata Letak Utama Berdampingan */
+        .profile-content {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+            gap: 24px !important;
+            position: relative !important;
+        }
+
+        /* 2. Kolom Kiri Normal */
+        .profile-left-column {
+            width: 250px !important;
+            flex-shrink: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+        }
+
+        .profile-image-container {
+            width: 100% !important;
+            position: relative !important;
+        }
+
+        .profile-image {
+            width: 100% !important;
+            height: 280px !important;
+            border-radius: 20px !important;
+            display: block !important;
+            object-fit: cover !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+        }
+
+        /* 3. Kartu Kontak */
+        .profile-contact {
+            background: #ffffff !important;
+            padding: 20px 22px !important;
+            border-radius: 16px !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
+            border: 1px solid #f0f0f0 !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+
+        .profile-contact-item {
+            display: flex !important;
+            align-items: center !important;
+            gap: 14px !important;
+            color: #333333 !important;
+            font-size: 14px !important;
+            text-decoration: none !important;
+        }
+
+        .profile-contact-item i {
+            font-size: 18px !important;
+            color: #222222 !important;
+            width: 20px !important;
+            text-align: center !important;
+            flex-shrink: 0 !important;
+        }
+
+        .profile-contact-item span {
+            word-break: break-all !important;
+            font-weight: 500 !important;
+            line-height: 1.2 !important;
+        }
+
+        /* Styling Khusus Baris CV */
+        .cv-contact-item i {
+            color: #e53935 !important; /* Warna khas PDF */
+            font-size: 20px !important;
+        }
+
+        .cv-contact-item span {
+            color: #e53935 !important;
+            font-weight: 600 !important;
+            white-space: nowrap !important;
+        }
+
+        .cv-contact-item:hover {
+            opacity: 0.85 !important;
+        }
+
+        /* 4. Kolom Kanan */
+        .profile-wraper {
+            flex: 1 !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .skills-container {
+            background: #ffffff !important;
+            padding: 24px 28px !important;
+            border-radius: 16px !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
+            border: 1px solid #f0f0f0 !important;
+        }
+
+        .skills-container h3 {
+            margin-top: 0 !important;
+            color: #1a252f !important;
+            font-size: 20px !important;
+            margin-bottom: 16px !important;
+        }
+
+        .skills-container p {
+            color: #4a5568 !important;
+            line-height: 1.65 !important;
+            font-size: 14.5px !important;
+            margin: 0 !important;
+        }
+
+        /* ========================================================
+           3 GAMBAR SEJAJAR & DESKRIPSI DI BAWAH
+        ======================================================== */
+        .gallery-row-container {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            gap: 16px !important;
+            width: 100% !important;
+            margin: 20px 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        .zoomable-img {
+            flex: 1 1 0 !important;
+            width: 32% !important;
+            max-width: 32% !important;
+            height: 200px !important;
+            object-fit: cover !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important;
+            border: 1px solid #e2e8f0 !important;
+            display: block !important;
+            margin: 0 !important;
+            cursor: pointer !important;
+            transition: transform 0.2s ease, filter 0.2s ease !important;
+        }
+
+        .zoomable-img:hover {
+            transform: scale(1.03) !important;
+            filter: brightness(0.95) !important;
+        }
+
+        .single-box-description {
+            background: #ffffff !important;
+            padding: 22px 28px !important;
+            border-radius: 14px !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
+            border: 1px solid #f0f0f0 !important;
+            text-align: center !important;
+            margin: 20px auto 0 auto !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .single-box-description h3 {
+            margin: 0 0 10px 0 !important;
+            color: #1a252f !important;
+            font-size: 18px !important;
+        }
+
+        .single-box-description p {
+            margin: 0 !important;
+            color: #4a5568 !important;
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Work Experience List */
+        .experience-item {
+            background: #ffffff !important;
+            padding: 20px 24px !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
+            border: 1px solid #f0f0f0 !important;
+            margin-top: 16px !important;
+        }
+
+        .experience-item h3 {
+            margin: 0 0 4px 0 !important;
+            font-size: 18px !important;
+            color: #1a252f !important;
+        }
+
+        .experience-item .company {
+            font-weight: 600 !important;
+            color: #2b6cb0 !important;
+            font-size: 14px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .experience-item p {
+            font-size: 14px !important;
+            color: #4a5568 !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+        }
+
+        /* ========================================================
+           STYLE UNTUK POPUP / MODAL ZOOM GAMBAR
+        ======================================================== */
+        .image-modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.25s ease-in-out;
+        }
+
+        .image-modal-overlay.active {
+            display: flex;
+        }
+
+        .image-modal-content {
+            max-width: 85%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: contain;
+            animation: zoomIn 0.25s ease-in-out;
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #ffffff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .image-modal-close:hover {
+            color: #ff4d4d;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        /* Responsif Layar HP */
+        @media (max-width: 768px) {
+            .profile-content {
+                flex-direction: column !important;
+            }
+            .profile-left-column {
+                width: 100% !important;
+            }
+            .gallery-row-container {
+                flex-direction: column !important;
+            }
+            .zoomable-img {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="#profile" data-tooltip="Profile">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-text">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#education" data-tooltip="Education">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span class="nav-text">Education</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#experience" data-tooltip="Experience">
+                        <i class="fas fa-briefcase"></i>
+                        <span class="nav-text">Experience</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#projects" data-tooltip="Projects">
+                        <i class="fas fa-code"></i>
+                        <span class="nav-text">Research & Projects</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Profile Section -->
+        <section id="profile" class="section">
+            <div class="container">
+                <div class="profile-content">
+
+                    <!-- KOLOM KIRI: Foto & Kartu Kontak -->
+                    <div class="profile-left-column">
+                        <div class="profile-image-container">
+                            <img id="profile-pic" src="Foto Rigan.jpg" alt="Profile Picture" class="profile-image">
+                        </div>
+                        
+                        <!-- Kartu Kontak -->
+                        <div class="profile-contact">
+                            <a href="mailto:riganisbatulhaqqi6@gmail.com" class="profile-contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span id="profile-email">riganisbatulhaqqi6@gmail.com</span>
+                            </a>
+                            <a href="tel:089520084593" class="profile-contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span id="profile-phone">089520084593</span>
+                            </a>
+                            
+                            <!-- Baris CV yang Sudah Diperbaiki (Sejajar Horizon) -->
+                            <a href="CV_Rigan%20Isbatul%20Haqqi.pdf" class="profile-contact-item cv-contact-item" title="Download CV" download="CV_Rigan_Isbatul_Haqqi.pdf">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>CV Rigan Isbatul Haqqi</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- KOLOM KANAN: Deskripsi Profile -->
+                    <div class="profile-wraper">
+                        <div class="skills-container" id="skills-container">
+                            <h3>Profile</h3>
+                            <p style="text-align: justify;">
+                                I am a Fresh Graduate in Electrical Engineering with a strong interest in electronics, control systems, and the Internet of Things (IoT). During my studies, I actively developed skills in designing and analyzing electronic circuits, programming microcontrollers, and integrating hardware with software. I also gained internship experience as a Maintenance Operation for 4 months. In addition, I served as the Event Coordinator for the ORMAWA CUP Program and actively participated in sports competitions. As an active student both on and off campus, I possess strong interpersonal, analytical, and critical thinking skills that enable me to plan strategically and solve problems effectively.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            
-            <img src="foto3.jpg" alt="Foto Education 3" class="zoomable-img">
-        </div>
+        </section>
 
-        <div class="single-box-description">
-            <h3>Politeknik Negeri Semarang (D3 Teknik Elektronika)</h3>
-            <p>
-                Fokus pada pengembangan Sistem Kontrol, Mikrokontroler, dan Desain PCB. Aktif dalam kegiatan organisasi BEM sebagai Koordinator Lapangan ORMAWA CUP serta menjadi Kapten Tim Futsal Teknik Elektro (Juara 2 Elektro CUP).
-            </p>
-        </div>
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <div class="container">
+                <h2>Education</h2>
+                
+                <!-- 3 Gambar dengan Class zoomable-img -->
+                <div class="gallery-row-container">
+                    <img src="foto2.jpg" alt="Foto Education 1" class="zoomable-img">
+                    <img src="foto1.jpg" alt="Foto Education 2" class="zoomable-img">
+                    <img src="foto3.jpg" alt="Foto Education 3" class="zoomable-img">
+                </div>
 
+                <!-- 1 Deskripsi di Bawah Gambar -->
+                <div class="single-box-description">
+                    <h3>Politeknik Negeri Semarang (D3 Teknik Elektronika)</h3>
+                    <p>
+                        Fokus pada pengembangan Sistem Kontrol, Mikrokontroler, dan Desain PCB. Aktif dalam kegiatan organisasi BEM sebagai Koordinator Lapangan ORMAWA CUP serta menjadi Kapten Tim Futsal Teknik Elektro (Juara 2 Elektro CUP).
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="container">
+                <h2>Work Experience</h2>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <h3>Maintenance Operation Intern</h3>
+                        <div class="company">PT Indofood Fortuna Makmur • (4 Bulan)</div>
+                        <p>Melakukan pemeliharaan operasional, pengecekan komponen kontrol elektronik, serta tindakan perawatan korektif dan preventif mesin industri.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2>Research and Projects</h2>
+                
+                <!-- 3 Gambar Proyek dengan Class zoomable-img -->
+                <div class="gallery-row-container">
+                    <img src="foto_proyek_1.jpg" alt="Proyek 1" class="zoomable-img">
+                    <img src="foto_proyek_2.jpg" alt="Proyek 2" class="zoomable-img">
+                    <img src="foto_proyek_3.jpg" alt="Proyek 3" class="zoomable-img">
+                </div>
+
+                <!-- 1 Deskripsi di Bawah Gambar Proyek -->
+                <div class="single-box-description">
+                    <h3>Riset & Pengalaman Teknis</h3>
+                    <p>
+                        Pengembangan Sistem Monitoring berbasis IoT (MQTT), Pemrograman Mikrokontroler & Otomasi PLC, serta Perancangan Skematik dan Layout PCB menggunakan Proteus & EasyEDA.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- WADAH POPUP / MODAL GAMBAR MEMBESAR -->
+    <div id="imageModal" class="image-modal-overlay">
+        <span class="image-modal-close">&times;</span>
+        <img class="image-modal-content" id="modalImage" alt="Zoomed View">
     </div>
-</section>
+
+    <footer>
+        <p>&copy; <span id="current-year">2026</span> Rigan Isbatul Haqqi portofolio</p>
+    </footer>
+
+    <!-- SCRIPT FITUR ZOOM GAMBAR -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const closeBtn = document.querySelector(".image-modal-close");
+            const zoomableImages = document.querySelectorAll(".zoomable-img");
+
+            // Pasang event click pada semua gambar ber-class .zoomable-img
+            zoomableImages.forEach(img => {
+                img.addEventListener("click", function () {
+                    modal.classList.add("active");
+                    modalImg.src = this.src;
+                });
+            });
+
+            // Tombol Tutup (X)
+            closeBtn.addEventListener("click", function () {
+                modal.classList.remove("active");
+            });
+
+            // Tutup jika area luar gambar di-klik
+            modal.addEventListener("click", function (e) {
+                if (e.target !== modalImg) {
+                    modal.classList.remove("active");
+                }
+            });
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
