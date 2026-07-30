@@ -130,7 +130,84 @@
             padding: 0 !important;
         }
 
-        /* Memberikan efek tunggal kotak putih bersih di bagian dalam (Profile) */
+        /* Styling Grid 3 Gambar Sejajar di Education */
+        .card-grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 20px !important;
+            margin-top: 16px !important;
+        }
+
+        .custom-card {
+            background: #ffffff !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
+            border: 1px solid #f0f0f0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08) !important;
+        }
+
+        .custom-card-img {
+            width: 100% !important;
+            height: 180px !important;
+            object-fit: cover !important;
+            display: block !important;
+        }
+
+        .custom-card-content {
+            padding: 16px !important;
+        }
+
+        .custom-card-content h4 {
+            margin: 0 0 8px 0 !important;
+            font-size: 16px !important;
+            color: #1a252f !important;
+        }
+
+        .custom-card-content p {
+            margin: 0 !important;
+            font-size: 13.5px !important;
+            color: #4a5568 !important;
+            line-height: 1.5 !important;
+        }
+
+        /* Styling Work Experience List */
+        .experience-item {
+            background: #ffffff !important;
+            padding: 20px 24px !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
+            border: 1px solid #f0f0f0 !important;
+            margin-top: 16px !important;
+        }
+
+        .experience-item h3 {
+            margin: 0 0 4px 0 !important;
+            font-size: 18px !important;
+            color: #1a252f !important;
+        }
+
+        .experience-item .company {
+            font-weight: 600 !important;
+            color: #2b6cb0 !important;
+            font-size: 14px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .experience-item p {
+            font-size: 14px !important;
+            color: #4a5568 !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+        }
+
         .skills-container {
             background: #ffffff !important;
             padding: 24px 28px !important;
@@ -151,6 +228,19 @@
             line-height: 1.65 !important;
             font-size: 14.5px !important;
             margin: 0 !important;
+        }
+
+        /* Responsif Layar HP */
+        @media (max-width: 768px) {
+            .profile-content {
+                flex-direction: column !important;
+            }
+            .profile-left-column {
+                width: 100% !important;
+            }
+            .card-grid {
+                grid-template-columns: 1fr !important;
+            }
         }
     </style>
 </head>
@@ -240,6 +330,38 @@
         <section id="education" class="section">
             <div class="container">
                 <h2>Education</h2>
+
+                <!-- EDIT DI SINI: Kartu Pendidikan (3 Kolom Sejajar) -->
+                <div class="card-grid">
+                    
+                    <!-- Kartu 1 -->
+                    <div class="custom-card">
+                        <!-- Masukkan nama file foto kegiatan/kampus 1 -->
+                        <img src="foto1.jpg" alt="Pendidikan 1" class="custom-card-img">
+                        <div class="custom-card-content">
+                            <h4>Politeknik Negeri Semarang</h4>
+                            <p>D3 Teknik Elektronika - Fokus pada Sistem Kontrol, Mikrokontroler, dan Desain PCB.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 2 -->
+                    <div class="custom-card">
+                        <!-- Masukkan nama file foto kegiatan/kampus 2 -->
+                        <img src="foto2.jpg" alt="Pendidikan 2" class="custom-card-img">
+                        <div class="custom-card-content">
+                            <h4>Kegiatan Organisasi / BEM</h4>
+                            <p>Koordinator Lapangan ORMAWA CUP - Mengelola jalannya event kampus dan koordinasi tim.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 3 -->
+                    <div class="custom-card">
+                        <!-- Masukkan nama file foto kegiatan/kampus 3 -->
+                        <img src="foto3.jpg" alt="Pendidikan 3" class="custom-card-img">
+                        <div class="custom-card-content">
+                            <h4>Kompetisi Futsal Elektro CUP</h4>
+                            <p>Kapten Tim Futsal Teknik Elektro - Meraih Juara 2 dan melatih kepemimpinan lapangan.</p>
+                </div>
                 <div class="education-list" id="education-list"></div>
             </div>
         </section>
