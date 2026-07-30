@@ -121,14 +121,22 @@
         }
 
         /* 5. Kolom Kanan */
-        .profile-info {
+        /* Menghilangkan efek kotak/card pada wrapper luar */
+        .profile-wraper {
             flex: 1 !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        /* Memberikan efek tunggal kotak putih bersih di bagian dalam (Profile) */
+        .skills-container {
             background: #ffffff !important;
             padding: 24px 28px !important;
             border-radius: 16px !important;
             box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
             border: 1px solid #f0f0f0 !important;
-            position: relative !important;
         }
 
         .skills-container h3 {
@@ -203,7 +211,7 @@
                             </a>
                             <div class="social-links" id="social-links"></div>
                             
-                            <!-- Tombol Download CV (Menggunakan path file PDF kamu) -->
+                            <!-- Tombol Download CV -->
                             <a href="CV_Rigan%20Isbatul%20Haqqi.pdf" id="cv-download" class="cv-download-btn" title="Download CV" download="CV_Rigan_Isbatul_Haqqi.pdf">
                                 <i class="fas fa-file-pdf"></i>
                             </a>
