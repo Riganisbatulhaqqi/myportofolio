@@ -18,13 +18,13 @@
         .profile-content {
             display: flex !important;
             flex-direction: row !important;
-            align-items: flex-start !important; /* Mencegah kolom tertarik panjang secara aneh */
+            align-items: flex-start !important;
             justify-content: flex-start !important;
             gap: 24px !important;
             position: relative !important;
         }
 
-        /* 2. Kolom Kiri Normal (Tidak Melayang / Ikut Scroll secara Aneh) */
+        /* 2. Kolom Kiri Normal */
         .profile-left-column {
             width: 250px !important;
             flex-shrink: 0 !important;
@@ -43,9 +43,10 @@
 
         .profile-image {
             width: 100% !important;
-            height: 90% !important;
+            height: 280px !important;
             border-radius: 20px !important;
             display: block !important;
+            object-fit: cover !important;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
         }
 
@@ -86,7 +87,7 @@
             line-height: 1.2 !important;
         }
 
-        /* 4. Perbaikan Utama Tombol PDF (Dijamin Bisa Di-klik) */
+        /* 4. Tombol PDF */
         a.cv-download-btn,
         #cv-download {
             display: inline-flex !important;
@@ -103,15 +104,15 @@
             transition: all 0.2s ease !important;
             border: 1px solid #ffcdd2 !important;
             position: relative !important;
-            z-index: 9999 !important; /* Memaksa tombol di urutan paling atas */
-            pointer-events: auto !important; /* Memastikan event klik tidak terhalang */
+            z-index: 9999 !important;
+            pointer-events: auto !important;
         }
 
         a.cv-download-btn i,
         #cv-download i {
             font-size: 20px !important;
             color: #e53935 !important;
-            pointer-events: none !important; /* Menghindari bug klik pada ikon dalam tag <a> */
+            pointer-events: none !important;
         }
 
         a.cv-download-btn:hover,
@@ -121,7 +122,6 @@
         }
 
         /* 5. Kolom Kanan */
-        /* Menghilangkan efek kotak/card pada wrapper luar */
         .profile-wraper {
             flex: 1 !important;
             background: transparent !important;
@@ -130,55 +130,81 @@
             padding: 0 !important;
         }
 
-        /* Styling Grid 3 Gambar Sejajar di Education */
-        .card-grid {
-            display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important;
-            gap: 20px !important;
-            margin-top: 16px !important;
-        }
-
-        .custom-card {
+        .skills-container {
             background: #ffffff !important;
-            border-radius: 12px !important;
-            overflow: hidden !important;
+            padding: 24px 28px !important;
+            border-radius: 16px !important;
             box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
             border: 1px solid #f0f0f0 !important;
-            display: flex !important;
-            flex-direction: column !important;
-            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
         }
 
-        .custom-card:hover {
-            transform: translateY(-4px) !important;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08) !important;
-        }
-
-        .custom-card-img {
-            width: 100% !important;
-            height: 180px !important;
-            object-fit: cover !important;
-            display: block !important;
-        }
-
-        .custom-card-content {
-            padding: 16px !important;
-        }
-
-        .custom-card-content h4 {
-            margin: 0 0 8px 0 !important;
-            font-size: 16px !important;
+        .skills-container h3 {
+            margin-top: 0 !important;
             color: #1a252f !important;
+            font-size: 20px !important;
+            margin-bottom: 16px !important;
         }
 
-        .custom-card-content p {
-            margin: 0 !important;
-            font-size: 13.5px !important;
+        .skills-container p {
             color: #4a5568 !important;
-            line-height: 1.5 !important;
+            line-height: 1.65 !important;
+            font-size: 14.5px !important;
+            margin: 0 !important;
         }
 
-        /* Styling Work Experience List */
+        /* ========================================================
+           ATURAN UNTUK 3 GAMBAR SEJAJAR & DESKRIPSI DI BAWAH
+        ======================================================== */
+        .gallery-row-container {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            gap: 16px !important;
+            width: 100% !important;
+            margin: 20px 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        .gallery-row-container img {
+            flex: 1 1 0 !important;
+            width: 32% !important;
+            max-width: 32% !important;
+            height: 200px !important;
+            object-fit: cover !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important;
+            border: 1px solid #e2e8f0 !important;
+            display: block !important;
+            margin: 0 !important;
+        }
+
+        .single-box-description {
+            background: #ffffff !important;
+            padding: 22px 28px !important;
+            border-radius: 14px !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
+            border: 1px solid #f0f0f0 !important;
+            text-align: center !important;
+            margin: 20px auto 0 auto !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .single-box-description h3 {
+            margin: 0 0 10px 0 !important;
+            color: #1a252f !important;
+            font-size: 18px !important;
+        }
+
+        .single-box-description p {
+            margin: 0 !important;
+            color: #4a5568 !important;
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Work Experience List */
         .experience-item {
             background: #ffffff !important;
             padding: 20px 24px !important;
@@ -208,28 +234,6 @@
             margin: 0 !important;
         }
 
-        .skills-container {
-            background: #ffffff !important;
-            padding: 24px 28px !important;
-            border-radius: 16px !important;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
-            border: 1px solid #f0f0f0 !important;
-        }
-
-        .skills-container h3 {
-            margin-top: 0 !important;
-            color: #1a252f !important;
-            font-size: 20px !important;
-            margin-bottom: 16px !important;
-        }
-
-        .skills-container p {
-            color: #4a5568 !important;
-            line-height: 1.65 !important;
-            font-size: 14.5px !important;
-            margin: 0 !important;
-        }
-
         /* Responsif Layar HP */
         @media (max-width: 768px) {
             .profile-content {
@@ -238,8 +242,12 @@
             .profile-left-column {
                 width: 100% !important;
             }
-            .card-grid {
-                grid-template-columns: 1fr !important;
+            .gallery-row-container {
+                flex-direction: column !important;
+            }
+            .gallery-row-container img {
+                width: 100% !important;
+                max-width: 100% !important;
             }
         }
     </style>
@@ -299,7 +307,6 @@
                                 <i class="fas fa-phone"></i>
                                 <span id="profile-phone">089520084593</span>
                             </a>
-                            <div class="social-links" id="social-links"></div>
                             
                             <!-- Tombol Download CV -->
                             <a href="CV_Rigan%20Isbatul%20Haqqi.pdf" id="cv-download" class="cv-download-btn" title="Download CV" download="CV_Rigan_Isbatul_Haqqi.pdf">
@@ -310,15 +317,11 @@
 
                     <!-- KOLOM KANAN: Deskripsi Profile -->
                     <div class="profile-wraper">
-                        <h1 id="profile-name" style="display:none;"></h1>
-                        <p id="longor" style="display:none;"></p>
-                    
                         <div class="skills-container" id="skills-container">
                             <h3>Profile</h3>
                             <p style="text-align: justify;">
                                 I am a Fresh Graduate in Electrical Engineering with a strong interest in electronics, control systems, and the Internet of Things (IoT). During my studies, I actively developed skills in designing and analyzing electronic circuits, programming microcontrollers, and integrating hardware with software. I also gained internship experience as a Maintenance Operation for 4 months. In addition, I served as the Event Coordinator for the ORMAWA CUP Program and actively participated in sports competitions. As an active student both on and off campus, I possess strong interpersonal, analytical, and critical thinking skills that enable me to plan strategically and solve problems effectively.
                             </p>
-                            <div class="skills-grid" id="skills-grid"></div>
                         </div>
                     </div>
 
@@ -327,33 +330,39 @@
         </section>
 
         <!-- Education Section -->
-<section id="education" class="section">
-    <div class="container">
-        <h2>Education</h2>
-        
-        <!-- Wadah Khusus 3 Gambar Sejajar -->
-        <div class="gallery-row-container">
-            <img src="foto1.jpg" alt="Foto Education 1">
-            <img src="foto 2.jpg" alt="Foto Education 2">
-            <img src="foto3.jpg" alt="Foto Education 3">
-        </div>
+        <section id="education" class="section">
+            <div class="container">
+                <h2>Education</h2>
+                
+                <!-- 3 Gambar Kunci Menggunakan Style Inline agar Tidak Bisa Dirusak CSS Luar -->
+                <div class="gallery-row-container" style="display: flex !important; flex-direction: row !important; gap: 16px !important; width: 100% !important;">
+                    <img src="foto1.jpg" alt="Foto Education 1" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
+                    <img src="foto 2.jpg" alt="Foto Education 2" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
+                    <img src="foto3.jpg" alt="Foto Education 3" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
+                </div>
 
-        <!-- Wadah Deskripsi Tunggal di Bawah Gambar -->
-        <div class="single-box-description">
-            <h3>Politeknik Negeri Semarang (D3 Teknik Elektronika)</h3>
-            <p>
-                Fokus pada pengembangan Sistem Kontrol, Mikrokontroler, dan Desain PCB. Aktif dalam kegiatan organisasi BEM sebagai Koordinator Lapangan ORMAWA CUP serta menjadi Kapten Tim Futsal Teknik Elektro (Juara 2 Elektro CUP).
-            </p>
-        </div>
+                <!-- 1 Deskripsi di Bawah Gambar -->
+                <div class="single-box-description">
+                    <h3>Politeknik Negeri Semarang (D3 Teknik Elektronika)</h3>
+                    <p>
+                        Fokus pada pengembangan Sistem Kontrol, Mikrokontroler, dan Desain PCB. Aktif dalam kegiatan organisasi BEM sebagai Koordinator Lapangan ORMAWA CUP serta menjadi Kapten Tim Futsal Teknik Elektro (Juara 2 Elektro CUP).
+                    </p>
+                </div>
 
-    </div>
-</section>
+            </div>
+        </section>
 
         <!-- Experience Section -->
         <section id="experience" class="section">
             <div class="container">
                 <h2>Work Experience</h2>
-                <div class="experience-list" id="experience-list"></div>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <h3>Maintenance Operation Intern</h3>
+                        <div class="company">PT Indofood Fortuna Makmur • (4 Bulan)</div>
+                        <p>Melakukan pemeliharaan operasional, pengecekan komponen kontrol elektronik, serta tindakan perawatan korektif dan preventif mesin industri.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -361,13 +370,28 @@
         <section id="projects" class="section">
             <div class="container">
                 <h2>Research and Projects</h2>
-                <div class="projects-grid" id="projects-grid"></div>
+                
+                <!-- 3 Gambar Sejajar Proyek -->
+                <div class="gallery-row-container" style="display: flex !important; flex-direction: row !important; gap: 16px !important; width: 100% !important;">
+                    <img src="foto_proyek_1.jpg" alt="Proyek 1" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
+                    <img src="foto_proyek_2.jpg" alt="Proyek 2" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
+                    <img src="foto_proyek_3.jpg" alt="Proyek 3" style="flex: 1 !important; width: 32% !important; height: 200px !important; object-fit: cover !important;">
+                </div>
+
+                <!-- 1 Deskripsi di Bawah Gambar Proyek -->
+                <div class="single-box-description">
+                    <h3>Riset & Pengalaman Teknis</h3>
+                    <p>
+                        Pengembangan Sistem Monitoring berbasis IoT (MQTT), Pemrograman Mikrokontroler & Otomasi PLC, serta Perancangan Skematik dan Layout PCB menggunakan Proteus & EasyEDA.
+                    </p>
+                </div>
+
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; <span id="current-year"></span> Rigan Isbatul Haqqi portofolio</p>
+        <p>&copy; <span id="current-year">2026</span> Rigan Isbatul Haqqi portofolio</p>
     </footer>
 
     <script src="js/script.js"></script>
