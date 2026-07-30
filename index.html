@@ -18,31 +18,38 @@
         .profile-content {
             display: flex !important;
             flex-direction: row !important;
-            align-items: stretch !important;
+            align-items: flex-start !important; /* Mencegah kolom tertarik panjang secara aneh */
+            justify-content: flex-start !important;
             gap: 24px !important;
+            position: relative !important;
         }
 
-        /* 2. Kolom Kiri (Foto + Kontak) */
+        /* 2. Kolom Kiri Normal (Tidak Melayang / Ikut Scroll secara Aneh) */
         .profile-left-column {
             width: 280px !important;
             flex-shrink: 0 !important;
             display: flex !important;
             flex-direction: column !important;
             gap: 16px !important;
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
         }
 
         .profile-image-container {
             width: 100% !important;
+            position: relative !important;
         }
 
         .profile-image {
             width: 100% !important;
+            height: auto !important;
             border-radius: 20px !important;
             display: block !important;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
         }
 
-        /* 3. Kartu Kontak Rapi Sesuai Gambar */
+        /* 3. Kartu Kontak */
         .profile-contact {
             background: #ffffff !important;
             padding: 20px 22px !important;
@@ -52,6 +59,8 @@
             flex-direction: column !important;
             gap: 16px !important;
             border: 1px solid #f0f0f0 !important;
+            position: relative !important;
+            z-index: 10 !important;
         }
 
         .profile-contact-item {
@@ -77,8 +86,9 @@
             line-height: 1.2 !important;
         }
 
-        /* 4. Tombol PDF Bulat Rapi Sesuai Referensi */
-        .cv-download-btn {
+        /* 4. Perbaikan Utama Tombol PDF (Dijamin Bisa Di-klik) */
+        a.cv-download-btn,
+        #cv-download {
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -92,19 +102,25 @@
             margin-top: 4px !important;
             transition: all 0.2s ease !important;
             border: 1px solid #ffcdd2 !important;
+            position: relative !important;
+            z-index: 9999 !important; /* Memaksa tombol di urutan paling atas */
+            pointer-events: auto !important; /* Memastikan event klik tidak terhalang */
         }
 
-        .cv-download-btn i {
+        a.cv-download-btn i,
+        #cv-download i {
             font-size: 20px !important;
             color: #e53935 !important;
+            pointer-events: none !important; /* Menghindari bug klik pada ikon dalam tag <a> */
         }
 
-        .cv-download-btn:hover {
+        a.cv-download-btn:hover,
+        #cv-download:hover {
             background-color: #ffcdd2 !important;
-            transform: scale(1.06) !important;
+            transform: scale(1.08) !important;
         }
 
-        /* 5. Kolom Kanan (Kartu Profile) */
+        /* 5. Kolom Kanan */
         .profile-info {
             flex: 1 !important;
             background: #ffffff !important;
@@ -112,6 +128,7 @@
             border-radius: 16px !important;
             box-shadow: 0 4px 14px rgba(0,0,0,0.05) !important;
             border: 1px solid #f0f0f0 !important;
+            position: relative !important;
         }
 
         .skills-container h3 {
@@ -174,7 +191,7 @@
                             <img id="profile-pic" src="Foto Rigan.jpg" alt="Profile Picture" class="profile-image">
                         </div>
                         
-                        <!-- Kartu Kontak Putih Bersih -->
+                        <!-- Kartu Kontak -->
                         <div class="profile-contact">
                             <a href="mailto:riganisbatulhaqqi6@gmail.com" class="profile-contact-item">
                                 <i class="fas fa-envelope"></i>
@@ -186,7 +203,7 @@
                             </a>
                             <div class="social-links" id="social-links"></div>
                             
-                            <!-- Tombol Download CV -->
+                            <!-- Tombol Download CV (Menggunakan path file PDF kamu) -->
                             <a href="CV_Rigan%20Isbatul%20Haqqi.pdf" id="cv-download" class="cv-download-btn" title="Download CV" download="CV_Rigan_Isbatul_Haqqi.pdf">
                                 <i class="fas fa-file-pdf"></i>
                             </a>
