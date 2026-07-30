@@ -13,112 +13,119 @@
             font-family: Arial, Helvetica, sans-serif !important;
         }
 
-		.profile-contact a.cv-download-btn,
-        #cv-download {
+        /* Penyesuaian Flexbox agar Foto & Profile Sejajar Samping */
+        .profile-content {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: flex-start !important;
+            gap: 30px !important;
+        }
+
+        .profile-image-container {
+            position: relative !important;
+            flex-shrink: 0 !important;
+        }
+
+        .profile-info {
+            flex: 1 !important;
+        }
+
+        /* Tombol Download CV Terapung/Melayang di Pojok Foto atau Teks */
+        .cv-download-btn-floating {
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
-            width: 42px !important;
-            height: 42px !important;
+            width: 40px !important;
+            height: 40px !important;
             border-radius: 50% !important;
             background-color: #ffebee !important;
             color: #e53935 !important;
             text-decoration: none !important;
-            position: relative !important;
-            z-index: 999 !important; /* Memastikan posisi di paling atas agar bisa diklik */
+            position: absolute !important;
+            bottom: 15px !important;
+            right: 15px !important;
+            z-index: 99 !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             cursor: pointer !important;
-            margin-top: 10px !important;
-            overflow: hidden !important; /* Mencegah ikon keluar lingkaran */
-		}
+        }
 
-		.profile-contact a.cv-download-btn i,
-        #cv-download i {
-            font-size: 20px !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            line-height: 1 !important;
+        .cv-download-btn-floating i {
+            font-size: 18px !important;
             color: #e53935 !important;
-		}
+        }
 
-		/* Efek saat tombol di-hover */
-        .profile-contact a.cv-download-btn:hover,
-        #cv-download:hover {
+        .cv-download-btn-floating:hover {
             background-color: #ffcdd2 !important;
-            transform: scale(1.05);
+            transform: scale(1.1);
             transition: all 0.2s ease;
-		}
+        }
     </style>
 </head>
 <body>
-	
+    
     <header>
         <nav class="sidebar-nav">
-			<ul>
-				<li>
-					<a href="#profile" data-tooltip="Profile">
-						<i class="fas fa-user"></i>
-						<span class="nav-text">Profile</span>
-					</a>
-				</li>
-				<li>
-					<a href="#education" data-tooltip="Education">
-						<i class="fas fa-graduation-cap"></i>
-						<span class="nav-text">Education</span>
-					</a>
-				</li>
-				<li>
-					<a href="#experience" data-tooltip="Experience">
-						<i class="fas fa-briefcase"></i>
-						<span class="nav-text">Experience</span>
-					</a>
-				</li>
-				<li>
-					<a href="#projects" data-tooltip="Projects">
-						<i class="fas fa-code"></i>
-						<span class="nav-text">Research & Projects</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
+            <ul>
+                <li>
+                    <a href="#profile" data-tooltip="Profile">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-text">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#education" data-tooltip="Education">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span class="nav-text">Education</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#experience" data-tooltip="Experience">
+                        <i class="fas fa-briefcase"></i>
+                        <span class="nav-text">Experience</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#projects" data-tooltip="Projects">
+                        <i class="fas fa-code"></i>
+                        <span class="nav-text">Research & Projects</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         <!-- Profile Section -->
-		<section id="profile" class="section">
-			<div class="container">
-				<div class="profile-content">
-					<div class="profile-image-container">
-						<img id="profile-pic" src="Foto Rigan.jpg" alt="Profile Picture" class="profile-image">
-						<div class="profile-contact">
-							<p><i class="fas fa-envelope"></i> <span id="profile-email">riganisbatulhaqqi6@gmail.com</span></p>
-							<p><i class="fas fa-phone"></i> <span id="profile-phone">089520084593</span></p>
-							<div class="social-links" id="social-links"></div>
-							<a href="CV_Rigan%20Isbatul%20Haqqi.pdf" id="cv-download" class="cv-download-btn" title="Download CV" download>
-								<i class="fas fa-file-pdf"></i>
-							</a>
-						</div>
-						
-					    <div class="profile-info">
-						<h1 id="profile-name"></h1>
-					    <p id="longor"></p>
-    						<!-- letak skill-->
-							<div class="skills-container" id="skills-container">
-								<h3>Profile</h3>
-								<p style="text-align: justify;">
-								I am a Fresh Graduate in Electrical Engineering with a strong interest in electronics, control systems, 
-and the Internet of Things (IoT). During my studies, I actively developed skills in designing and analyzing 
-electronic circuits, programming microcontrollers, and integrating hardware with software. I also gained 
-internship experience as a Maintenance Operation for 4 months. In addition, I served as the Event 
-Coordinator for the ORMAWA CUP Program and actively participated in sports competitions. As an active 
-student both on and off campus, I possess strong interpersonal, analytical, and critical thinking skills that 
-enable me to plan strategically and solve problems effectively. 
-								</p>
-								<div class="skills-grid" id="skills-grid"></div>
-							</div>
-					</div>
-				</div>
-			</div>
-		</section>
+        <section id="profile" class="section">
+            <div class="container">
+                <div class="profile-content">
+
+                    <!-- SISI KIRI: Foto Sahaja -->
+                    <div class="profile-image-container">
+                        <img id="profile-pic" src="Foto Rigan.jpg" alt="Profile Picture" class="profile-image">
+                        
+                        <!-- Tombol CV Ikon PDF di Pojok Kanan Bawah Foto -->
+                        <a href="CV_Rigan%20Isbatul%20Haqqi.pdf" id="cv-download" class="cv-download-btn-floating" title="Download CV" download="CV_Rigan_Isbatul_Haqqi.pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </a>
+                    </div>
+
+                    <!-- SISI KANAN: Kotak Deskripsi Profile -->
+                    <div class="profile-info">
+                        <h1 id="profile-name"></h1>
+                        <p id="longor"></p>
+                        <div class="skills-container" id="skills-container">
+                            <h3>Profile</h3>
+                            <p style="text-align: justify;">
+                                I am a Fresh Graduate in Electrical Engineering with a strong interest in electronics, control systems, and the Internet of Things (IoT). During my studies, I actively developed skills in designing and analyzing electronic circuits, programming microcontrollers, and integrating hardware with software. I also gained internship experience as a Maintenance Operation for 4 months. In addition, I served as the Event Coordinator for the ORMAWA CUP Program and actively participated in sports competitions. As an active student both on and off campus, I possess strong interpersonal, analytical, and critical thinking skills that enable me to plan strategically and solve problems effectively.
+                            </p>
+                            <div class="skills-grid" id="skills-grid"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
 
         <!-- Education Section -->
         <section id="education" class="section">
