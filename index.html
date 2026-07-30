@@ -87,41 +87,23 @@
             line-height: 1.2 !important;
         }
 
-        /* 4. Tombol PDF */
-        a.cv-download-btn,
-        #cv-download {
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            width: 44px !important;
-            height: 44px !important;
-            border-radius: 50% !important;
-            background-color: #ffebee !important;
-            color: #e53935 !important;
-            text-decoration: none !important;
-            cursor: pointer !important;
-            margin-top: 4px !important;
-            transition: all 0.2s ease !important;
-            border: 1px solid #ffcdd2 !important;
-            position: relative !important;
-            z-index: 9999 !important;
-            pointer-events: auto !important;
-        }
-
-        a.cv-download-btn i,
-        #cv-download i {
+        /* Styling Khusus Baris CV */
+        .cv-contact-item i {
+            color: #e53935 !important; /* Warna khas PDF */
             font-size: 20px !important;
+        }
+
+        .cv-contact-item span {
             color: #e53935 !important;
-            pointer-events: none !important;
+            font-weight: 600 !important;
+            white-space: nowrap !important;
         }
 
-        a.cv-download-btn:hover,
-        #cv-download:hover {
-            background-color: #ffcdd2 !important;
-            transform: scale(1.08) !important;
+        .cv-contact-item:hover {
+            opacity: 0.85 !important;
         }
 
-        /* 5. Kolom Kanan */
+        /* 4. Kolom Kanan */
         .profile-wraper {
             flex: 1 !important;
             background: transparent !important;
@@ -177,7 +159,7 @@
             border: 1px solid #e2e8f0 !important;
             display: block !important;
             margin: 0 !important;
-            cursor: pointer !important; /* Menandakan gambar bisa diklik */
+            cursor: pointer !important;
             transition: transform 0.2s ease, filter 0.2s ease !important;
         }
 
@@ -245,17 +227,17 @@
            STYLE UNTUK POPUP / MODAL ZOOM GAMBAR
         ======================================================== */
         .image-modal-overlay {
-            display: none; /* Tersembunyi secara default */
+            display: none;
             position: fixed;
             z-index: 99999;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85); /* Latar belakang gelap */
+            background-color: rgba(0, 0, 0, 0.85);
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(4px); /* Efek blur di belakang */
+            backdrop-filter: blur(4px);
             animation: fadeIn 0.25s ease-in-out;
         }
 
@@ -371,9 +353,9 @@
                                 <span id="profile-phone">089520084593</span>
                             </a>
                             
-                            <!-- Tombol Download CV -->
-                            <a href="CV_Rigan%20Isbatul%20Haqqi.pdf" id="cv-download" class="cv-download-btn" title="Download CV" download="CV_Rigan_Isbatul_Haqqi.pdf">
-                                <i class="fas fa-file-pdf-icon"></i>
+                            <!-- Baris CV yang Sudah Diperbaiki (Sejajar Horizon) -->
+                            <a href="CV_Rigan%20Isbatul%20Haqqi.pdf" class="profile-contact-item cv-contact-item" title="Download CV" download="CV_Rigan_Isbatul_Haqqi.pdf">
+                                <i class="fas fa-file-pdf"></i>
                                 <span>CV Rigan Isbatul Haqqi</span>
                             </a>
                         </div>
