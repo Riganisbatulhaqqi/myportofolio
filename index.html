@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* === TAMBAHKAN KODE DI SINI (BARIS TERATAS DALAM TAG STYLE) === */
+        /* === BASE SETUP & SMOOTH SCROLL === */
         html {
             scroll-behavior: smooth;
         }
@@ -17,14 +17,8 @@
         body {
             font-family: Arial, Helvetica, sans-serif !important;
             background-color: #f8f9fa;
-        }
-
-        /* 1. Tata Letak Utama Berdampingan */
-        .profile-content {
-            display: flex !important;
-        body {
-            font-family: Arial, Helvetica, sans-serif !important;
-            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
         }
 
         /* 1. Tata Letak Utama Berdampingan */
@@ -102,7 +96,7 @@
 
         /* Styling Khusus Baris CV */
         .cv-contact-item i {
-            color: #e53935 !important; /* Warna khas PDF */
+            color: #e53935 !important;
             font-size: 20px !important;
         }
 
@@ -148,7 +142,7 @@
         }
 
         /* ========================================================
-           3 GAMBAR SEJAJAR & DESKRIPSI DI BAWAH
+           3 GAMBAR SEJAJAR & TRANSISI SMOOTH
         ======================================================== */
         .gallery-row-container {
             display: flex !important;
@@ -162,9 +156,9 @@
         }
 
         .zoomable-img {
-            flex: 1 1 0 !important;
-            width: 32% !important;
-            max-width: 32% !important;
+            flex: 0 0 31% !important; /* Mencegah gambar melar liar */
+            width: 31% !important;
+            max-width: 31% !important;
             height: 200px !important;
             object-fit: cover !important;
             border-radius: 12px !important;
@@ -173,12 +167,16 @@
             display: block !important;
             margin: 0 !important;
             cursor: pointer !important;
-            transition: transform 0.2s ease, filter 0.2s ease !important;
+            /* Transisi Halus (Smooth) */
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                        filter 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                        box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
         }
 
         .zoomable-img:hover {
-            transform: scale(1.03) !important;
+            transform: translateY(-4px) scale(1.02) !important; /* Efek terangkat & membesar halus */
             filter: brightness(0.95) !important;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
         }
 
         .single-box-description {
@@ -252,11 +250,12 @@
             justify-content: center;
             align-items: center;
             backdrop-filter: blur(4px);
-            animation: fadeIn 0.25s ease-in-out;
+            transition: opacity 0.3s ease;
         }
 
         .image-modal-overlay.active {
             display: flex;
+            animation: fadeIn 0.3s ease forwards;
         }
 
         .image-modal-content {
@@ -265,7 +264,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             object-fit: contain;
-            animation: zoomIn 0.25s ease-in-out;
+            animation: zoomIn 0.3s ease forwards;
         }
 
         .image-modal-close {
@@ -289,8 +288,8 @@
         }
 
         @keyframes zoomIn {
-            from { transform: scale(0.8); }
-            to { transform: scale(1); }
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         /* Responsif Layar HP */
@@ -367,7 +366,7 @@
                                 <span id="profile-phone">089520084593</span>
                             </a>
                             
-                            <!-- Baris CV yang Sudah Diperbaiki (Sejajar Horizon) -->
+                            <!-- Baris CV -->
                             <a href="CV_Rigan%20Isbatul%20Haqqi.pdf" class="profile-contact-item cv-contact-item" title="Download CV" download="CV_Rigan_Isbatul_Haqqi.pdf">
                                 <i class="fas fa-file-pdf"></i>
                                 <span>CV Rigan Isbatul Haqqi</span>
@@ -414,23 +413,25 @@
 
         <!-- Experience Section -->
         <section id="experience" class="section">
-            <div class="single-box-description">
-                <h2>Work Experience</h2>
-                 <!-- 3 Gambar dengan Class zoomable-img -->
-                <div class="gallery-row-container">
-                    <img src="foto4.jpg" alt="Foto Education 4" class="zoomable-img">
-                    <img src="foto5.jpg" alt="Foto Education 5" class="zoomable-img logo-contain">
-                    <img src="foto6.jpg" alt="Foto Education 6" class="zoomable-img">
-                </div> <!-- PENUTUP GALLERY ROW CONTAINER -->
-
-                <!-- Deskripsi Pengalaman Kerja (Posisinya Otomatis Pindah Tepat di Bawah Gambar) -->
-                <div class="experience-list">
-                    <div class="experience-item">
-                        <h3>Maintenance Operational Secondnary</h3>
-                        <div class="company">PT Djarum Kudus • (4 Bulan)</div>
-                        <p>Melakukan pemeliharaan operasional, pengecekan komponen kontrol elektronik, serta tindakan perawatan korektif dan preventif mesin industri.</p>
+            <div class="container">
+                <div class="single-box-description">
+                    <h2>Work Experience</h2>
+                    <!-- 3 Gambar dengan Class zoomable-img -->
+                    <div class="gallery-row-container">
+                        <img src="foto4.jpg" alt="Foto Experience 4" class="zoomable-img">
+                        <img src="foto5.jpg" alt="Foto Experience 5" class="zoomable-img logo-contain">
+                        <img src="foto6.jpg" alt="Foto Experience 6" class="zoomable-img">
                     </div>
-                    
+
+                    <!-- Deskripsi Pengalaman Kerja -->
+                    <div class="experience-list">
+                        <div class="experience-item">
+                            <h3>Maintenance Operational Secondary</h3>
+                            <div class="company">PT Djarum Kudus • (4 Bulan)</div>
+                            <p>Melakukan pemeliharaan operasional, pengecekan komponen kontrol elektronik, serta tindakan perawatan korektif dan preventif mesin industri.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -476,7 +477,6 @@
             const closeBtn = document.querySelector(".image-modal-close");
             const zoomableImages = document.querySelectorAll(".zoomable-img");
 
-            // Pasang event click pada semua gambar ber-class .zoomable-img
             zoomableImages.forEach(img => {
                 img.addEventListener("click", function () {
                     modal.classList.add("active");
@@ -484,12 +484,10 @@
                 });
             });
 
-            // Tombol Tutup (X)
             closeBtn.addEventListener("click", function () {
                 modal.classList.remove("active");
             });
 
-            // Tutup jika area luar gambar di-klik
             modal.addEventListener("click", function (e) {
                 if (e.target !== modalImg) {
                     modal.classList.remove("active");
